@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "628080597426",
-    "project_id": "app-filmesgcardoso",
-    "storage_bucket": "app-filmesgcardoso.appspot.com"
+    "project_number": "735357395619",
+    "project_id": "app-filmesrn",
+    "storage_bucket": "app-filmesrn.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:628080597426:android:854e1439a6d7b529aeecab",
+        "mobilesdk_app_id": "1:735357395619:android:df27b522d79d9c6b671516",
         "android_client_info": {
           "package_name": "com.appfilmes"
         }
       },
       "oauth_client": [
         {
-          "client_id": "628080597426-q0t52veo5519v839a27uac5r3i27b6dr.apps.googleusercontent.com",
+          "client_id": "735357395619-44pnpfv02is3i513ue9bi1co8cu80br6.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAsB1Lg0qnCxhw7-39uDPT7zVhZQdSjwaw"
+          "current_key": "AIzaSyCAHr-QjH17wrzzl0ZhH8NxCnJPFfmgE1s"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "628080597426-q0t52veo5519v839a27uac5r3i27b6dr.apps.googleusercontent.com",
+              "client_id": "735357395619-44pnpfv02is3i513ue9bi1co8cu80br6.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
