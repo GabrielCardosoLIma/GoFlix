@@ -1,10 +1,11 @@
-import { View, Text, Image } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 import { AlignStar, Assessment, Container, ImageMovie, StarIcon, TtileMovie, VoteAverage } from "./style";
 
 interface Props {
     title: string;
     poster_path: string;
     vote_average: number;
+    overview: string;
 }
 
 type PropsMovies = {
@@ -12,8 +13,13 @@ type PropsMovies = {
 }
 
 export function CardMovies({ data }: PropsMovies) {
+    const navigation = useNavigation();
+
     return (
-        <Container>
+        <Container onPress={() => navigation.navigate("InfoMovies", {
+            title: data.title,
+            overview: data.overview
+        })}>
             <ImageMovie
                 source={{ uri: `https://image.tmdb.org/t/p/w500${data.poster_path}` }}
             />

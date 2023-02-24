@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { AntDesign } from "@expo/vector-icons";
 
-export const Container = styled.View`
+export const Container = styled.TouchableOpacity`
   width: 120px;
   flex-direction: column;
   margin-right: 20px;

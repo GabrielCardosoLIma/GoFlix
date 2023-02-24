@@ -1,18 +1,15 @@
 import React, { useEffect, useState } from "react";
-import { FlatList, ScrollView, View } from "react-native";
-import { CardMovies } from "../../components/Card/CardMovies";
-import { SearchIcon } from "../../components/Input/style";
-import { ListImages } from "../../components/ListImages";
-import { Platform } from 'react-native';
-import api from "../../services/api";
 import { useNavigation } from "@react-navigation/native";
-import { ButtonMenu, ButtonSearch, Container, Header, Menu, MenuIcon, MoviesInTheaters, Title, TitleMoviesInTheaters } from "./style";
-import { BlurView } from "expo-blur";
+import { FlatList, ScrollView } from "react-native";
+import { CardMovies } from "../../components/Card/CardMovies";
+import { SearchIcon } from "../../screens/Search/style";
+import { ListImages } from "../../components/ListImages";
+import api from "../../services/api";
+import { ButtonMenu, ButtonSearch, Container, Header, Menu, MoviesInTheaters, Title, TitleMoviesInTheaters } from "./style";
 import { Tabs } from "../../components/Tabs";
 
 const { API_KEY } = process.env;
 const LANGUAGE = "pt-BR";
-
 
 export function Home() {
     const navigation = useNavigation();
@@ -21,11 +18,11 @@ export function Home() {
     const [moviesRecommended, setMoviesRecommended] = useState([]);
 
     useEffect(() => {
-        api.get(`/movie/popular${API_KEY}&language=${LANGUAGE}&page=1`)
+        api.get(`/movie/popular?${API_KEY}&language=${LANGUAGE}&page=1`)
             .then(response => response.data)
             .then(data => setMoviesPopular(data.results))
 
-        api.get(`/movie/top_rated${API_KEY}&language=${LANGUAGE}&page=1`)
+        api.get(`/movie/top_rated?${API_KEY}&language=${LANGUAGE}&page=1`)
             .then(response => response.data)
             .then(data => setMoviesRecommended(data.results))
     }, [])
@@ -34,20 +31,11 @@ export function Home() {
             <Container>
                 <Header>
                     <Menu>
-                        <ButtonMenu
-                            activeOpacity={0.7}
-                        >
-                            <MenuIcon
-                                name="menu"
-                            />
-                        </ButtonMenu>
                         <Title>
                             GOFLIX
                         </Title>
                     </Menu>
-                    <ButtonSearch
-                        onPress={() => navigation.navigate("Search")}
-                    >
+                    <ButtonSearch onPress={() => navigation.navigate("Search")}>
                         <SearchIcon
                             name="search"
                         />
