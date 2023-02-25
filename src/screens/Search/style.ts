@@ -11,6 +11,7 @@ export const InputArea = styled.View`
   flex-direction: row;
   align-items: center;
   margin-top: 40px;
+  margin-bottom: 20px;
 `;
 
 export const InputSearch = styled.TextInput.attrs({
@@ -32,4 +33,11 @@ export const ButtonSearch = styled.TouchableOpacity`
 export const SearchIcon = styled(Feather)`
   font-size: 24px;
   color: #fff;
+`;
+
+export const SearchText = styled.Text`
+  font-size: 24px;
+  color: #fff;
+  font-weight: bold;
+  margin-bottom: 10px;
 `;
