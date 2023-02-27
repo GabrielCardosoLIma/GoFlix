@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { RFPercentage, RFValue } from "react-native-responsive-fontsize";
 import { AntDesign } from "@expo/vector-icons";
 
 export const Container = styled.TouchableOpacity`
@@ -23,7 +24,7 @@ export const TtileMovie = styled.Text`
 `;
 
 export const Assessment = styled.View`
-  width: 200px;
+  flex: 1;
   flex-direction: column;
   margin-left: 20px;
 `;
@@ -34,7 +35,7 @@ export const StarRating = styled.View`
 `;
 
 export const VoteAverage = styled.Text`
-  font-size: 16px;
+  font-size: ${RFValue(16)}px;
   color: #fff;
 `;
 

@@ -1,4 +1,5 @@
 import { useNavigation } from "@react-navigation/native";
+import { useWindowDimensions } from "react-native";
 import {
   AddIcon,
   BackdropMovies,
@@ -16,6 +17,8 @@ interface Props {
   backdrop_path: string;
   vote_average: number;
   overview: string;
+  poster_path: string;
+  release_date: string;
 }
 
 type PropsImagesMovies = {
@@ -24,11 +27,13 @@ type PropsImagesMovies = {
 
 export function ListImages({ data }: PropsImagesMovies) {
   const navigation = useNavigation();
+  const window = useWindowDimensions();
 
   return (
     <Container>
       <BackdropMovies
         source={{ uri: `https://image.tmdb.org/t/p/w500${data.backdrop_path}` }}
+        style={{ width: window.width - 40 }}
       />
       <Buttons>
         <ButtonInfo
@@ -37,6 +42,10 @@ export function ListImages({ data }: PropsImagesMovies) {
             navigation.navigate("InfoMovies", {
               title: data.title,
               overview: data.overview,
+              backdrop_path: data.backdrop_path,
+              poster_path: data.poster_path,
+              vote_average: data.vote_average,
+              release_date: data.release_date
             })
           }
         >

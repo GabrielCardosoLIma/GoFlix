@@ -14,7 +14,7 @@ export function AppRoutes() {
         headerShown: false,
       }}
     >
-      <Screen name="Início" component={Home} />
+      <Screen name="Home" component={Home} />
 
       <Screen name="Search" component={Search} />
 

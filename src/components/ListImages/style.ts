@@ -6,7 +6,6 @@ export const Container = styled.View`
 `;
 
 export const BackdropMovies = styled.Image`
-  width: 370px;
   height: 250px;
   border-radius: 20px;
 `;
@@ -25,8 +24,8 @@ export const InfoIcon = styled(AntDesign)`
 `;
 
 export const ButtonInfo = styled.TouchableOpacity`
-  width: 155px;
-  height: 40px;
+  flex: 1;
+  height: 38px;
   justify-content: center;
   align-items: center;
   flex-direction: row;
@@ -41,8 +40,9 @@ export const TextButtonInfo = styled.Text`
 `;
 
 export const ButtonAdd = styled.TouchableOpacity`
-  width: 155px;
+  flex: 1;
   height: 40px;
+  margin-left: 20px;
   justify-content: center;
   align-items: center;
   flex-direction: row;

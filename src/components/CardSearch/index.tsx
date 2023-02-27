@@ -13,9 +13,11 @@ import {
 
 interface Props {
   title: string;
-  poster_path: string;
+  backdrop_path: string;
   vote_average: number;
   overview: string;
+  poster_path: string;
+  release_date: string;
 }
 
 type PropsMovies = {
@@ -31,6 +33,10 @@ export function CardSearch({ data }: PropsMovies) {
         navigation.navigate("InfoMovies", {
           title: data.title,
           overview: data.overview,
+          backdrop_path: data.backdrop_path,
+          poster_path: data.poster_path,
+          vote_average: data.vote_average,
+          release_date: data.release_date
         })
       }
     >

@@ -1,5 +1,7 @@
 import styled from "styled-components";
+import { RFPercentage, RFValue } from "react-native-responsive-fontsize";
 import { Feather } from "@expo/vector-icons";
+import { AntDesign } from "@expo/vector-icons";
 
 export const Container = styled.View`
   flex: 1;
@@ -26,18 +28,37 @@ export const InputSearch = styled.TextInput.attrs({
   color: #fff;
 `;
 
+export const SearchTextArea = styled.View`
+  flex-wrap: wrap;
+`;
+
 export const ButtonSearch = styled.TouchableOpacity`
   margin-left: 5px;
 `;
 
 export const SearchIcon = styled(Feather)`
-  font-size: 24px;
+  font-size: ${RFValue(24)}px;
   color: #fff;
 `;
 
 export const SearchText = styled.Text`
-  font-size: 24px;
+  font-size: ${RFValue(20)}px;
   color: #fff;
   font-weight: bold;
   margin-bottom: 10px;
+`;
+
+export const SearchMovieText = styled.Text`
+  font-size: 24px;
+  color: #fff;
+  font-style: italic;
+`;
+
+export const ButtonGoBack = styled.TouchableOpacity`
+  margin-right: 10px;
+`;
+
+export const IconGoBack = styled(AntDesign)`
+  font-size: 24px;
+  color: #fff;
 `;

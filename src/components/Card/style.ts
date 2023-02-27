@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { AntDesign } from "@expo/vector-icons";
 
 export const Container = styled.TouchableOpacity`
+  flex: 1;
   width: 120px;
   flex-direction: column;
   margin-right: 20px;
@@ -15,10 +16,9 @@ export const ImageMovie = styled.Image`
 
 export const TtileMovie = styled.Text`
   color: #fff;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: bold;
   text-align: center;
-  margin-top: 10px;
 `;
 
 export const Assessment = styled.View`
