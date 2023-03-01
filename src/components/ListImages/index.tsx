@@ -25,37 +25,18 @@ interface Props {
   release_date?: string;
 }
 
-interface PropsFavorite {
-  id: string;
-  title: string;
-  favorite: boolean;
-}
-
 type PropsImagesMovies = {
   data: Props;
 };
 
 export function ListImages({ data }: PropsImagesMovies) {
-  const [favorites, setFavorites] = useState(false);
+  const [favorites, setFavorites] = useState(true);
   const navigation = useNavigation();
   const window = useWindowDimensions();
 
-  function handleDoneToggle() {
+  async function handleDoneToggle() {
     // Referência para a coleção de filmes no Firebase
     const moviesRef = firestore().collection("Filmes");
-
-    moviesRef
-    .where("id", "==", `${data.id}`)
-    .onSnapshot(querySnapshot => {
-      const data = querySnapshot.docs.map(doc => {
-        return {
-          id: doc.id,
-          ...doc.data()
-        }
-      }) as PropsFavorite[];
-      console.log(data);
-      setFavorites(data[0].favorite)
-    })
 
     // Verifica se o filme já está cadastrado
     moviesRef
@@ -66,7 +47,7 @@ export function ListImages({ data }: PropsImagesMovies) {
           // Atualiza o campo favorite para false
           moviesRef
             .doc(`${data.id}`)
-            .update({ favorite: false })
+            .update({ favorite: !favorites })
             .then(() => console.log("Filme atualizado com sucesso!"))
             .catch((error) =>
               console.error("Erro ao atualizar filme: ", error)
@@ -75,7 +56,7 @@ export function ListImages({ data }: PropsImagesMovies) {
           moviesRef
             .doc(`${data.id}`)
             .set({ id: `${data.id}`, title: data.title, favorite: true })
-            .then(() => console.log("Filme cadastrado com sucesso!"))
+            .then(() => {})
             .catch((error) =>
               console.error("Erro ao cadastrar filme: ", error)
             );
@@ -90,8 +71,14 @@ export function ListImages({ data }: PropsImagesMovies) {
   }
 
   useEffect(() => {
+    // Referência para a coleção de filmes no Firebase
+    const moviesRef = firestore().collection("Filmes");
 
-  }, [])
+    moviesRef.doc(`${data.id}`).onSnapshot((doc) => {
+      const favorite = doc.exists && doc.data()?.favorite;
+      setFavorites(favorite || false);
+    });
+  }, [`${data.id}`]);
 
   return (
     <Container>
@@ -117,7 +104,7 @@ export function ListImages({ data }: PropsImagesMovies) {
           <TextButtonInfo>Info.</TextButtonInfo>
         </ButtonInfo>
         <ButtonAdd onPress={handleDoneToggle} activeOpacity={0.7}>
-          <AddIcon name={data.favorite ? "check" : "plus"} />
+          <AddIcon name={favorites ? "check" : "plus"} />
           <TextButtonAdd>Minha Lista</TextButtonAdd>
         </ButtonAdd>
       </Buttons>
