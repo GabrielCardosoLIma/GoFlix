@@ -35,7 +35,7 @@ export function Home() {
 
   function handleColorSelectionFavorite() {
     setSelectedColorFavorite(true);
-    navigation.navigate("Search")
+    navigation.navigate("Favorites")
   };
 
   useEffect(() => {

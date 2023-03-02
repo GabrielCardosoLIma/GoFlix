@@ -12,6 +12,7 @@ import {
 } from "./style";
 
 interface Props {
+  id: string;
   title: string;
   backdrop_path: string;
   vote_average: number;
@@ -31,12 +32,13 @@ export function CardSearch({ data }: PropsMovies) {
     <Container
       onPress={() =>
         navigation.navigate("InfoMovies", {
+          id: `${data.id}`,
           title: data.title,
           overview: data.overview,
           backdrop_path: data.backdrop_path,
           poster_path: data.poster_path,
           vote_average: data.vote_average,
-          release_date: data.release_date
+          release_date: data.release_date,
         })
       }
     >
@@ -51,9 +53,7 @@ export function CardSearch({ data }: PropsMovies) {
           </AlignStar>
           <VoteAverage>{data.vote_average}/10</VoteAverage>
         </StarRating>
-        <Description>
-            {data.overview}
-        </Description>
+        {/* <Description>{data.overview}</Description> */}
       </Assessment>
     </Container>
   );

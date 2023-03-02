@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { RouteProp, useNavigation, useRoute } from "@react-navigation/native";
+import { useNavigation } from "@react-navigation/native";
 import { Alert, FlatList } from "react-native";
 import { CardSearch } from "../../components/CardSearch";
 import api from "../../services/api";
@@ -15,7 +15,6 @@ import {
   SearchText,
   SearchTextArea,
 } from "./style";
-import { Tabs } from "../../components/Tabs";
 
 const { API_KEY } = process.env;
 const LANGUAGE = "pt-BR";
@@ -26,17 +25,6 @@ export function Search() {
   const [buscar, setBuscar] = useState("");
   const [movies, setMovies] = useState([]);
   const [search, setSearch] = useState([]);
-  const [selectedColorFavorite, setSelectedColorFavorite] = useState(false);
-
-  function handleColorSelectionHome() {
-    setSelectedColorFavorite(!selectedColorFavorite);
-    navigation.navigate("Home")
-  };
-
-  function handleColorSelectionFavorite() {
-    setSelectedColorFavorite(!selectedColorFavorite);
-    navigation.navigate("Search")
-  };
 
   async function handleGetMovies() {
     if (buscar === "") {
@@ -66,7 +54,6 @@ export function Search() {
       .then((response) => response.data)
       .then((data) => setSearch(data.results));
 
-    setSelectedColorFavorite(false)
   }, [buscar]);
 
   return (
@@ -118,11 +105,6 @@ export function Search() {
           renderItem={({ item }) => <CardSearch data={item} />}
         />
       )}
-      <Tabs
-        onPress1={handleColorSelectionHome}
-        onPress2={handleColorSelectionFavorite}
-        isSelected={selectedColorFavorite}
-      />
     </Container>
   );
 }

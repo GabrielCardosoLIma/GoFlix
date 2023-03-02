@@ -1,3 +1,4 @@
+import firestore from "@react-native-firebase/firestore";
 import {
   AlignStar,
   Assessment,
@@ -25,8 +26,10 @@ import {
 import { RouteProp, useRoute } from "@react-navigation/native";
 import { useNavigation } from "@react-navigation/native";
 import { ScrollView, useWindowDimensions } from "react-native";
+import { useEffect, useState } from "react";
 
 type ProfileScreenParams = {
+  id: string;
   title: string;
   poster_path: string;
   vote_average: number;
@@ -41,11 +44,13 @@ type ProfileScreenRouteProp = RouteProp<
 >;
 
 export function InfoMovies() {
+  const [favorites, setFavorites] = useState(true);
   const window = useWindowDimensions();
   const navigation = useNavigation();
   const route = useRoute<ProfileScreenRouteProp>();
 
   const {
+    id,
     title,
     overview,
     vote_average,
@@ -67,6 +72,58 @@ export function InfoMovies() {
   const dateFormated = `${day.toString().padStart(2, "0")}/${month
     .toString()
     .padStart(2, "0")}/${year}`;
+
+  async function handleDoneToggle() {
+    // Referência para a coleção de filmes no Firebase
+    const moviesRef = firestore().collection("Filmes");
+
+    // Verifica se o filme já está cadastrado
+    moviesRef
+      .doc(`${id}`)
+      .get()
+      .then((docSnapshot) => {
+        if (docSnapshot.exists) {
+          // Atualiza o campo favorite para false
+          moviesRef
+            .doc(`${id}`)
+            .update({ favorite: !favorites })
+            .then(() => console.log("Filme atualizado com sucesso!"))
+            .catch((error) =>
+              console.error("Erro ao atualizar filme: ", error)
+            );
+        } else {
+          moviesRef
+            .doc(`${id}`)
+            .set({
+              id: `${id}`,
+              title: title,
+              poster_path: poster_path,
+              vote_average: vote_average,
+              favorite: true,
+            })
+            .then(() => {})
+            .catch((error) =>
+              console.error("Erro ao cadastrar filme: ", error)
+            );
+        }
+      })
+      .catch((error) =>
+        console.error(
+          "Erro ao verificar se o filme já está cadastrado: ",
+          error
+        )
+      );
+  }
+
+  useEffect(() => {
+    // Referência para a coleção de filmes no Firebase
+    const moviesRef = firestore().collection("Filmes");
+
+    moviesRef.doc(`${id}`).onSnapshot((doc) => {
+      const favorite = doc.exists && doc.data()?.favorite;
+      setFavorites(favorite || false);
+    });
+  }, [`${id}`]);
 
   return (
     <Container>
@@ -101,12 +158,13 @@ export function InfoMovies() {
             <TitleReleaseDate>Data de lançamento: </TitleReleaseDate>
             <ReleaseDate>{dateFormated}</ReleaseDate>
           </ReleaseDateArea>
-          <ButtonFavorite>
-            <IconStarButtonFavorite name="staro" />
-            <TextButtonFavorite
-            // onPress={}
-            >
-              Favoritar
+          <ButtonFavorite onPress={handleDoneToggle}>
+            <IconStarButtonFavorite
+              style={favorites ? { color: "#eead2d" } : { color: "#000" }}
+              name={favorites ? "star" : "staro"}
+            />
+            <TextButtonFavorite>
+              {favorites ? "Favoritado" : "Favoritar"}
             </TextButtonFavorite>
           </ButtonFavorite>
         </TitleAndDescription>

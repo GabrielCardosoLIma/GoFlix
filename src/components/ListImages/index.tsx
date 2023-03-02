@@ -55,7 +55,13 @@ export function ListImages({ data }: PropsImagesMovies) {
         } else {
           moviesRef
             .doc(`${data.id}`)
-            .set({ id: `${data.id}`, title: data.title, favorite: true })
+            .set({
+              id: `${data.id}`,
+              title: data.title,
+              poster_path: data.poster_path,
+              vote_average: data.vote_average,
+              favorite: true,
+            })
             .then(() => {})
             .catch((error) =>
               console.error("Erro ao cadastrar filme: ", error)
@@ -91,6 +97,7 @@ export function ListImages({ data }: PropsImagesMovies) {
           activeOpacity={0.7}
           onPress={() =>
             navigation.navigate("InfoMovies", {
+              id: `${data.id}`,
               title: data.title,
               overview: data.overview,
               backdrop_path: data.backdrop_path,
