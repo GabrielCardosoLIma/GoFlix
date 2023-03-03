@@ -53,7 +53,7 @@ export function CardSearch({ data }: PropsMovies) {
           </AlignStar>
           <VoteAverage>{data.vote_average}/10</VoteAverage>
         </StarRating>
-        {/* <Description>{data.overview}</Description> */}
+        <Description>{data.overview}</Description>
       </Assessment>
     </Container>
   );

@@ -1,10 +1,11 @@
+import { useEffect, useState } from "react";
 import firestore from "@react-native-firebase/firestore";
-import { FlatList, Text } from "react-native";
+import { FlatList, Text, View } from "react-native";
 import { Tabs } from "../../components/Tabs";
 import { useNavigation } from "@react-navigation/native";
 import { Container, Header, TitleFavorites } from "./style";
-import { useEffect, useState } from "react";
-import { CardSearch } from "../../components/CardSearch";
+import { FontAwesome } from '@expo/vector-icons';
+import { CardFavorites } from "../../components/CardFavorites";
 
 export function Favorites() {
   const navigation = useNavigation();
@@ -29,7 +30,7 @@ export function Favorites() {
 
     moviesRef.where("favorite", "==", favorites).onSnapshot((querySnapshot) => {
       const dataMovies = querySnapshot.docs.map((doc) => {
-        return { id: doc.id && doc.data() };
+        return doc.data();
       });
       setData(dataMovies);
     });
@@ -41,13 +42,29 @@ export function Favorites() {
       <Header>
         <TitleFavorites>Filmes Favoritos</TitleFavorites>
       </Header>
-      <FlatList
-        data={data[0]}
-        horizontal={true}
-        showsHorizontalScrollIndicator={false}
-        keyExtractor={(item) => item.id}
-        renderItem={({ item }) => <CardSearch data={item} />}
-      />
+      {data.length === 0 ? (
+        <View
+          style={{
+            flex: 1,
+            justifyContent: "center",
+            alignItems: "center",
+            flexDirection: "column",
+          }}
+        >
+          <FontAwesome name="star-half-empty" size={50} color="#fff" style={{ marginBottom: 10 }} />
+          <Text style={{ textAlign: "center", color: "#fff", fontSize: 16 }}>
+            Você ainda não possui filmes marcados{"\n"}como favorito.
+          </Text>
+        </View>
+      ) : (
+        <FlatList
+          data={data}
+          showsVerticalScrollIndicator={false}
+          keyExtractor={(item) => item.id}
+          renderItem={({ item }) => <CardFavorites data={item} />}
+        />
+      )}
+
       <Tabs
         onPress1={handleColorSelectionHome}
         onPress2={handleColorSelectionFavorite}

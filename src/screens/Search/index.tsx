@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigation } from "@react-navigation/native";
-import { Alert, FlatList } from "react-native";
+import { ActivityIndicator, Alert, FlatList, View } from "react-native";
 import { CardSearch } from "../../components/CardSearch";
 import api from "../../services/api";
 import {
@@ -53,19 +53,13 @@ export function Search() {
       .get(`/search/movie?${API_KEY}&language=pt-BR&region=BR&query=${buscar}`)
       .then((response) => response.data)
       .then((data) => setSearch(data.results));
-
   }, [buscar]);
 
   return (
     <Container>
       <InputArea>
-        <ButtonGoBack
-          activeOpacity={0.7}
-          onPress={() => navigation.goBack()}
-        >
-          <IconGoBack
-            name="left"
-          />
+        <ButtonGoBack activeOpacity={0.7} onPress={() => navigation.goBack()}>
+          <IconGoBack name="left" />
         </ButtonGoBack>
         <InputSearch
           placeholder="Buscar filme"
@@ -83,12 +77,17 @@ export function Search() {
       {buscar === "" ? (
         <SearchText>Filmes em cartaz</SearchText>
       ) : (
-        <SearchTextArea
-          style={{ flexDirection: "row", marginBottom: 10 }}
-        >
+        <SearchTextArea style={{ flexDirection: "row", marginBottom: 10 }}>
           <SearchText>Resultados para: </SearchText>
           <SearchMovieText>{buscar}</SearchMovieText>
         </SearchTextArea>
+      )}
+      {movies.length === 0 && (
+        <View
+          style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
+        >
+          <ActivityIndicator size="large" color="#ff0000" />
+        </View>
       )}
       {buscar === "" ? (
         <FlatList
