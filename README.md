@@ -21,7 +21,6 @@
   <img src="https://user-images.githubusercontent.com/91638316/222983186-4b0f1ef0-dabe-44a9-8f7e-9d8dfae480ff.jpeg" width="300" height="520" />
   &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp 
   <img src="https://user-images.githubusercontent.com/91638316/222983186-4b0f1ef0-dabe-44a9-8f7e-9d8dfae480ff.jpeg" width="300" height="520" />
-  &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp 
 </div>
 
 <br>
