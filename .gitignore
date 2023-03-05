@@ -55,9 +55,8 @@ buck-out/
 web-build/
 dist/
 
-./android/app/google-services.json
+google-services.json
+
+*.json
 
 .env
-
-./eas.json
-./app.json
