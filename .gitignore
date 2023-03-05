@@ -59,6 +59,4 @@ google-services.json
 
 eas.json
 
-*.json
-
 .env

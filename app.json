@@ -1,0 +1,20 @@
+{
+  "expo": {
+    "name": "GoFlix",
+    "slug": "App-filmes",
+    "version": "1.0.0",
+    "assetBundlePatterns": ["**/*"],
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#000"
+      }
+    },
+    "icon": "./assets/icon.png",
+    "splash": {
+      "image": "./assets/splash.png",
+      "backgroundColor": "#000",
+      "resizeMode": "cover"
+    }
+  }
+}
