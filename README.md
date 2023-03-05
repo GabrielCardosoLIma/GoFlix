@@ -14,7 +14,7 @@
 <div align="center">
   <img src="https://user-images.githubusercontent.com/91638316/222982904-0b0e1324-74aa-484a-8447-4ba9d40a9283.png" width="300" height="520" />
   &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp 
-  <img src="https://user-images.githubusercontent.com/91638316/214073984-eb333190-1931-4dcf-b7c1-bda87b99dbb3.png" width="750" />
+  <img src="https://user-images.githubusercontent.com/91638316/222983093-4ce038f9-cb1c-4fb2-b710-e25f3379ca4f.jpeg" width="300" height="520" />
   &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp 
   <img src="https://user-images.githubusercontent.com/91638316/214074174-c4963c0d-8ccb-4a87-ab0e-5bf6dbcba9bd.png" width="750" />
   &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp 
