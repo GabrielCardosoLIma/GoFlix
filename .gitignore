@@ -58,7 +58,6 @@ dist/
 google-services.json
 
 eas.json
-app.json
 
 *.json
 
