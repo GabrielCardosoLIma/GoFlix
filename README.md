@@ -1,5 +1,5 @@
 <h1 align="center">
-  <img src="./assets/icon.png" alt="GoFlix" width="280px" height="150px">
+  <img src="./assets/icon.png" alt="GoFlix" width="400px" height="400px">
 </h1>
 
 <br>
