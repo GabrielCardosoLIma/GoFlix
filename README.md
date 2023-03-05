@@ -12,7 +12,7 @@
 <br> 
 
 <div align="center">
-  <img src="https://user-images.githubusercontent.com/91638316/222982904-0b0e1324-74aa-484a-8447-4ba9d40a9283.png" width="197" height="310"/>
+  <img src="https://user-images.githubusercontent.com/91638316/222982904-0b0e1324-74aa-484a-8447-4ba9d40a9283.png" width="197" height="330"/>
   &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
   <img src="https://user-images.githubusercontent.com/91638316/222983093-4ce038f9-cb1c-4fb2-b710-e25f3379ca4f.jpeg" width="197" />
   &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
