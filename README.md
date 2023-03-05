@@ -1,5 +1,5 @@
 <h1 align="center">
-  <img src="./assets/icon.png" alt="GoFlix" width="400px" height="400px">
+  <img src="https://user-images.githubusercontent.com/91638316/222982340-3d6add42-ce13-4286-adad-3d253e887c4d.png" alt="GoFlix">
 </h1>
 
 <br>
