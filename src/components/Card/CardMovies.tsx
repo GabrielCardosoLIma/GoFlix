@@ -1,6 +1,14 @@
 import { useNavigation } from "@react-navigation/native";
 import { useWindowDimensions } from "react-native";
-import { AlignStar, Assessment, Container, ImageMovie, StarIcon, TtileMovie, VoteAverage } from "./style";
+import {
+  AlignStar,
+  Assessment,
+  Container,
+  ImageMovie,
+  StarIcon,
+  TtileMovie,
+  VoteAverage
+} from "./style";
 
 interface Props {
     id: string;

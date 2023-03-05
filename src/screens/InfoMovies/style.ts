@@ -52,7 +52,7 @@ export const Assessment = styled.View`
 `;
 
 export const VoteAverage = styled.Text`
-  font-size: 12px;
+  font-size: 16px;
   color: #fff;
 `;
 

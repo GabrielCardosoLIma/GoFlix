@@ -1,14 +1,15 @@
 import { useEffect, useState } from "react";
 import firestore from "@react-native-firebase/firestore";
-import { FlatList, Text, View } from "react-native";
-import { Tabs } from "../../components/Tabs";
 import { useNavigation } from "@react-navigation/native";
-import { Container, Header, TitleFavorites } from "./style";
+import { FlatList, Text, View } from "react-native";
 import { FontAwesome } from '@expo/vector-icons';
+import { Tabs } from "../../components/Tabs";
 import { CardFavorites } from "../../components/CardFavorites";
+import { HomeScreenNavigationProp } from "../../types";
+import { Container, Header, TitleFavorites } from "./style";
 
 export function Favorites() {
-  const navigation = useNavigation();
+  const navigation = useNavigation<HomeScreenNavigationProp>();
 
   const [selectedColorFavorite, setSelectedColorFavorite] = useState(false);
   const [favorites, setFavorites] = useState(true);

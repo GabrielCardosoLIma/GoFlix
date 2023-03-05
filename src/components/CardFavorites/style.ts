@@ -2,7 +2,7 @@ import { AntDesign } from "@expo/vector-icons";
 import { RFValue } from "react-native-responsive-fontsize";
 import styled from "styled-components";
 
-export const Container = styled.TouchableOpacity`
+export const Container = styled.View`
   justify-content: space-between;
   flex-direction: row;
   padding: 0 20px;

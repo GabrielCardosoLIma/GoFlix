@@ -8,6 +8,8 @@ import {
 } from "@expo-google-fonts/inter";
 import { StatusBar } from "expo-status-bar";
 
+SplashScreen.preventAutoHideAsync();
+
 export default function App() {
   const [fontsLoaded] = useFonts({
     Inter_400Regular,
@@ -21,7 +23,7 @@ export default function App() {
   return (
     <>
       <Routes />
-      <StatusBar style="light" />
+      <StatusBar style="light" backgroundColor="transparent" translucent />
     </>
   );
 }

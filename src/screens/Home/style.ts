@@ -8,10 +8,9 @@ export const Container = styled.View`
 `;
 
 export const Title = styled.Text`
-  color: red;
+  color: #ff0000;
   font-size: 30px;
   font-weight: bold;
-  margin-left: 10px;
 `;
 
 export const Header = styled.View`

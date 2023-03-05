@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { useNavigation } from "@react-navigation/native";
 import { FlatList, ScrollView, useWindowDimensions } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 import { CardMovies } from "../../components/Card/CardMovies";
-import { SearchIcon } from "../../screens/Search/style";
 import { ListImages } from "../../components/ListImages";
+import { Tabs } from "../../components/Tabs";
+import { SearchIcon } from "../../screens/Search/style";
 import api from "../../services/api";
 import {
   ButtonSearch,
@@ -14,13 +15,13 @@ import {
   Title,
   TitleMoviesInTheaters,
 } from "./style";
-import { Tabs } from "../../components/Tabs";
+import { HomeScreenNavigationProp } from "../../types";
 
 const { API_KEY } = process.env;
 const LANGUAGE = "pt-BR";
 
 export function Home() {
-  const navigation = useNavigation();
+  const navigation = useNavigation<HomeScreenNavigationProp>();
   const window = useWindowDimensions();
 
   const [moviesPopular, setMoviesPopular] = useState([]);

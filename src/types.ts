@@ -6,6 +6,8 @@ export type HomeStackNavigatorParamList = {
     name: string;
     birthYear: string;
   };
+  Favorites: undefined;
+  Search: undefined;
 };
 
 export type HomeScreenNavigationProp = NativeStackNavigationProp<

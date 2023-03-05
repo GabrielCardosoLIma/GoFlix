@@ -1,7 +1,5 @@
-import { useNavigation } from "@react-navigation/native";
 import { BlurView } from "expo-blur";
-import { useState } from "react";
-import { useWindowDimensions } from "react-native";
+import { useWindowDimensions, Platform } from "react-native";
 import { ButtonFavorite, ButtonHome, Container, IconFavorite, IconHome, TextButton } from "./style";
 
 interface ButtonProps {
@@ -25,7 +23,7 @@ export function Tabs({ onPress1, onPress2, isSelected }: ButtonProps) {
                     flexDirection: 'row',
                 }}
                 tint="dark"
-                intensity={50}
+                intensity={Platform.OS === "ios" ? 50 : 100}
             >
                 <ButtonHome
                     activeOpacity={0.7}

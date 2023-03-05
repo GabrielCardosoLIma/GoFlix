@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigation } from "@react-navigation/native";
-import { ActivityIndicator, Alert, FlatList, View } from "react-native";
+import { ActivityIndicator, Alert, FlatList, View, useWindowDimensions } from "react-native";
 import { CardSearch } from "../../components/CardSearch";
 import api from "../../services/api";
 import {
@@ -21,6 +21,7 @@ const LANGUAGE = "pt-BR";
 
 export function Search() {
   const navigation = useNavigation();
+  const window = useWindowDimensions();
 
   const [buscar, setBuscar] = useState("");
   const [movies, setMovies] = useState([]);
@@ -84,7 +85,7 @@ export function Search() {
       )}
       {movies.length === 0 && (
         <View
-          style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
+          style={{ flex: 1, justifyContent: "center", alignItems: "center", marginTop: window.height - window.height / 1.7, marginBottom: window.height - window.height / 2}}
         >
           <ActivityIndicator size="large" color="#ff0000" />
         </View>

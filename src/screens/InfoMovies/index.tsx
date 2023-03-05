@@ -1,4 +1,9 @@
+import { useEffect, useState } from "react";
+import * as Notifications from "expo-notifications";
 import firestore from "@react-native-firebase/firestore";
+import { RouteProp, useRoute } from "@react-navigation/native";
+import { useNavigation } from "@react-navigation/native";
+import { ScrollView, useWindowDimensions } from "react-native";
 import {
   AlignStar,
   Assessment,
@@ -23,10 +28,6 @@ import {
   TitleReleaseDate,
   ReleaseDate,
 } from "./style";
-import { RouteProp, useRoute } from "@react-navigation/native";
-import { useNavigation } from "@react-navigation/native";
-import { ScrollView, useWindowDimensions } from "react-native";
-import { useEffect, useState } from "react";
 
 type ProfileScreenParams = {
   id: string;
@@ -44,10 +45,12 @@ type ProfileScreenRouteProp = RouteProp<
 >;
 
 export function InfoMovies() {
-  const [favorites, setFavorites] = useState(true);
   const window = useWindowDimensions();
   const navigation = useNavigation();
   const route = useRoute<ProfileScreenRouteProp>();
+
+  const [favorites, setFavorites] = useState(true);
+  const [notification, setNotification] = useState(false);
 
   const {
     id,
@@ -101,7 +104,7 @@ export function InfoMovies() {
               vote_average: vote_average,
               favorite: true,
             })
-            .then(() => {})
+            .then(() => setNotification(true))
             .catch((error) =>
               console.error("Erro ao cadastrar filme: ", error)
             );
@@ -113,6 +116,24 @@ export function InfoMovies() {
           error
         )
       );
+
+    if (notification === true) {
+      const trigger = new Date(Date.now());
+      trigger.setMinutes(trigger.getMinutes() + 1);
+
+      await Notifications.scheduleNotificationAsync({
+        content: {
+          title: "Parabéns! 🎬",
+          body: "Você acaba de adicionar um filme aos favoritos."
+        },
+        trigger
+      })
+      setNotification(false);
+    }
+
+    // const schedules = await Notifications.getAllScheduledNotificationsAsync();
+
+    // console.log(schedules);
   }
 
   useEffect(() => {
