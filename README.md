@@ -4,7 +4,7 @@
 
 <br>
 
-## 🚀 Projeto Filmes Android | GoFlix   
+## 🚀 Projeto Filmes | GoFlix   
 <br>
 
 **🎨  Layout By GabrielCardosoLIma<br>
